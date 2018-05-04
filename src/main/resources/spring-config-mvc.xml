@@ -66,13 +66,6 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/"/>
-          <!--  <mvc:exclude-mapping path="/express/*"/>
-            <mvc:exclude-mapping path="/authority/*/*"/>
-
-            <mvc:exclude-mapping path="/shop/*"/>-->
-            <mvc:exclude-mapping path="/advances/init"/>
-            <mvc:exclude-mapping path="/authority/initALL"/>
-            <mvc:exclude-mapping path="/edi/*"/>
             <mvc:exclude-mapping path="/api/**"/> <!-- api -->
             <mvc:exclude-mapping path="/**login**"/> <!-- login -->
             <mvc:exclude-mapping path="/login**"/> <!-- login -->
@@ -83,7 +76,6 @@
             <mvc:exclude-mapping path="/testSocket**"/> <!-- websocket -->
             <mvc:exclude-mapping path="/file/**"/> <!-- 文件上传 -->
             <mvc:exclude-mapping path="/echo**"/> <!-- websocket -->
-            <mvc:exclude-mapping path="/yuChengHeCallBack**"/> <!-- yuChengHe -->
             <mvc:exclude-mapping path="/redis.html"/>
 
             <mvc:exclude-mapping path="/mobileApp/getsLast"/>  <!-- 版本更新 -->
