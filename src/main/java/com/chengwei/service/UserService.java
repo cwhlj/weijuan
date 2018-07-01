@@ -5,4 +5,5 @@ package com.chengwei.service;
  * @date 2018/4/28 14:43
  */
 public interface UserService {
+    int countByUserAccount(String userAccount);
 }
