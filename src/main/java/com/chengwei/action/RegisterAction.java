@@ -15,23 +15,24 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/4/28 14:39
  */
 @Controller
-@ResponseBody
+//@ResponseBody
 @RequestMapping("/register")
 public class RegisterAction {
     @Resource
     private UserService userService;
 
     @RequestMapping("/checkAccount")
-    public void checkAccount(String userAccount, HttpServletRequest request){
+    public String checkAccount(String userAccount, HttpServletRequest request){
         if(StringUtils.isEmpty(userAccount)){
             request.setAttribute("errorMsg", "参数为空！");
-            return;
+            return "register";
         }
 
         int count = userService.countByUserAccount(userAccount);
         if(count>0){
             request.setAttribute("errorMsg", "用户名重复！");
-            return;
+            return "register";
         }
+        return "register";
     }
 }
