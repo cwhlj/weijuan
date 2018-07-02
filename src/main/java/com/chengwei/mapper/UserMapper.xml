@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengwei.mapper.UserMapper">
+    <resultMap type="com.chengwei.entity.User" id="UserResult">
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userAccount" column="user_account"/>
+        <result property="userPassword" column="user_password"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,user_name,user_account,user_password
+    </sql>
+
+    <select id="countByUserAccount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from t_user where user_account=#{userAccount}
+    </select>
+
+    <!--<select id="selectByUserId" parameterType="java.lang.Integer" resultMap="UserResult">-->
+        <!--select * from t_user where id=#{id}-->
+    <!--</select>-->
+
+    <!--<select id="findUser" parameterType="java.util.Map" resultMap="UserResult">-->
+        <!--select * from t_user-->
+        <!--<where>-->
+            <!--<if test="userName!=null and userName!='' ">-->
+                <!--and userName like #{userName}-->
+            <!--</if>-->
+            <!--<if test="roleName!=null and roleName!='' ">-->
+                <!--and roleName = #{roleName}-->
+            <!--</if>-->
+        <!--</where>-->
+        <!--<if test="start!=null and size!=null">-->
+            <!--limit #{start},#{size}-->
+        <!--</if>-->
+    <!--</select>-->
+
+    <!--<select id="getTotalUser" parameterType="java.util.Map" resultType="java.lang.Long">-->
+        <!--select count(*) from t_user-->
+        <!--<where>-->
+            <!--<if test="userName!=null and userName!='' ">-->
+                <!--and userName like #{userName}-->
+            <!--</if>-->
+            <!--<if test="roleName!=null and roleName!='' ">-->
+                <!--and roleName = #{roleName}-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
+    <!--<insert id="addUser" parameterType="com.chengwei.entity.User">-->
+        <!--insert into t_user values(null,#{userName},#{password},#{trueName},#{email},#{phone},#{roleName})-->
+    <!--</insert>-->
+
+    <!--<update id="updateUser" parameterType="com.chengwei.entity.User" >-->
+        <!--update t_user-->
+        <!--<set>-->
+            <!--<if test="userName!=null and userName!='' ">-->
+                <!--userName=#{userName},-->
+            <!--</if>-->
+            <!--<if test="password!=null and password!='' ">-->
+                <!--password=#{password},-->
+            <!--</if>-->
+            <!--<if test="trueName!=null and trueName!='' ">-->
+                <!--trueName=#{trueName},-->
+            <!--</if>-->
+            <!--<if test="email!=null and email!='' ">-->
+                <!--email=#{email},-->
+            <!--</if>-->
+            <!--<if test="phone!=null and phone!='' ">-->
+                <!--phone=#{phone},-->
+            <!--</if>-->
+            <!--<if test="roleName!=null and roleName!='' ">-->
+                <!--roleName=#{roleName},-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--where id=#{id}-->
+    <!--</update>-->
+
+    <!--<delete id="deleteUser" parameterType="java.lang.Integer">-->
+        <!--delete from t_user where id=#{id}-->
+    <!--</delete>-->
+
+    <!--<select id="getsByMap" parameterType="java.util.HashMap" resultMap="UserResult">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--from t_user-->
+        <!--where 1=1-->
+        <!--<foreach collection="map.keys" item="_itemKey" open="" separator="">-->
+            <!--<if test="null != map[_itemKey]">-->
+                <!--and ${_itemKey} = #{map[${_itemKey}]}-->
+            <!--</if>-->
+        <!--</foreach>-->
+    <!--</select>-->
+
+    <!--<select id="getCountByMap" parameterType="java.util.HashMap" resultType="java.lang.Integer">-->
+        <!--select count(1)-->
+        <!--from t_user-->
+        <!--where 1=1-->
+        <!--<foreach collection="map.keys" item="_itemKey" open="" separator="">-->
+            <!--<if test="null != map[_itemKey]">-->
+                <!--and ${_itemKey} = #{map[${_itemKey}]}-->
+            <!--</if>-->
+        <!--</foreach>-->
+    <!--</select>-->
+
+    <insert id="insert" parameterType="com.chengwei.entity.User">
+        insert into t_user values
+        <foreach collection="users" item="user" separator=",">
+            (null,#{user.userName},#{user.password},#{user.trueName},#{user.email},#{user.phone},#{user.roleName})
+        </foreach>
+    </insert>
+</mapper>

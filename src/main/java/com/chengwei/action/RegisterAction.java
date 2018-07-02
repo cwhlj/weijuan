@@ -3,7 +3,9 @@ package com.chengwei.action;
 import com.chengwei.service.UserService;
 import com.common.util.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/4/28 14:39
  */
 @Controller
+@ResponseBody
 @RequestMapping("/register")
 public class RegisterAction {
     @Resource
